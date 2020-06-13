@@ -110,7 +110,10 @@ public class LicenseService {
 		return oranization;
 		
 	}
-
+	public Organization getOrganizationFromCache(String organizationId) {
+		return restTemplateClient.getOrganizationFromCache(organizationId);
+	}
+	
 	public Optional<License> getLicense(String licenseId) {
 		/*return new License().withId(licenseId)
 				.withOrganizationId(UUID.randomUUID().toString())

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.javatechnology.config.SystemConfig;
 import com.javatechnology.service.LicenseService;
 import com.javatechnology.service.model.License;
+import com.javatechnology.service.model.Organization;
 
 @RestController
 @RequestMapping(value="v1/Organizations/{organizationId}")
@@ -23,7 +24,7 @@ public class LicesneController {
 	@Autowired
 	private SystemConfig config;
 	
-	@RequestMapping(value="/{licenseId}")
+	//@RequestMapping(value="/{licenseId}")
 	public List<License> getLicense(@PathVariable("organizationId") String organizationId,
 			@PathVariable("licenseId") String licenseId) {
 		System.out.println("System Config info :" +config.getProperty());
@@ -31,6 +32,12 @@ public class LicesneController {
 		return service.getLicensesByOrg(licenseId);
 		
 	}
+	@RequestMapping(value="/{licenseId}")
+	public Organization getOrganizationFromCache(@PathVariable("organizationId") String organizationId,
+			@PathVariable("licenseId") String licenseId) {
+		return service.getOrganizationFromCache(licenseId);
+	}
+	
 	
 	@RequestMapping(value="/{licenseId}/{clientType}")
 	public Optional<License> getLicenseFromOrgination(

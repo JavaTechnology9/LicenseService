@@ -1,5 +1,6 @@
 package com.javatechnology.service.model;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -9,10 +10,14 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Organization")
-public class Organization {
+@Table
+public class Organization implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
-	private String Organization_id;
+	private String id;
 	@Column
 	private String name;
 	@Column
@@ -30,10 +35,10 @@ public class Organization {
 		this.license = license;
 	}
 	public String getId() {
-		return Organization_id;
+		return id;
 	}
 	public void setId(String id) {
-		this.Organization_id = id;
+		this.id = id;
 	}
 	public String getName() {
 		return name;

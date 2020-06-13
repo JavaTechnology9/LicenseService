@@ -1,0 +1,15 @@
+security:  oauth2:    client:      access-token-uri: http://localhost:9963/auth/oauth/token    resource:      user-info-uri: http://localhost:9963/auth/user      #localhost:9963/auth/userserver:  port: 9999  
+
+spring:
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: orgChangeTopic
+          content-type: application/json
+          group: licensingGroup
+      kafka:
+        binder:
+          zkNodes: localhost
+          brokers: localhost    config:      uri:      - http://localhost:8888      enabled: true  application:    name: LicenseService    eureka:  instance:    prefer-ip-address: true  client:    register-with-eureka: true    fetch-registry: true    logging:  level:    org.springframework.web: debug    com.javatechnology: debug
+   
